@@ -1,0 +1,11 @@
+{
+  "name": "dia1_ex1",
+  "version": "1.2.0",
+  "description": "Retorna lista de arquivos da pasta files na porta 8181",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Denis Missias",
+  "license": "ISC"
+}
