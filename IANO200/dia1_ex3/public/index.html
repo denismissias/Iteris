@@ -3,46 +3,49 @@
 	<head>
 		<meta name="viewport" content="width=device-width">
 		<meta charset="UTF-8">
-		<title>Tabela estática de arquivos</title>
+		<title>Tabela dinâmica de arquivos</title>
 	</head>
     <script type="text/javascript">
     function server()
 	{
+		if(!window.XMLHttpRequest)
+			return;
+			
+		var table = document.getElementById("tblDinamica");
+			
 		xmlhttp = new XMLHttpRequest();
-		xmlhttp.open("GET","http://localhost:8001/getstring", true);
-		xmlhttp.onreadystatechange=function(){
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
-				console.log(xmlhttp.readyState);
-				console.log(xmlhttp.status);
-			}
+		
+		try {
+			xmlhttp.onreadystatechange = function() {
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					var response = xmlhttp.responseText;
+					var responseJSON = JSON.parse(response);
+                        
+                    var lines = "";
+                    for(var i = 0; i < responseJSON.diretorio.length; i++) {
+                        lines += "<tr><td><a href='" + responseJSON.diretorio[i] + "'>" + responseJSON.diretorio[i] + "</a></td></tr>";
+                    }
+					
+					table.innerHTML = lines;
+				}
+			};
+			
+			xmlhttp.open("GET","http://localhost:8181/obterArquivos", true);
+			xmlhttp.send();
+		} catch(e) {
+			console.log('catch', e);
 		}
-		xmlhttp.send();
 	}
     </script>
 	
-	<body>
+	<body onload="server()">
 		<table>
             <thead>
                 <tr>
                     <th>Nome do arquivo</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Arquivo 1.txt</td>
-                </tr>
-                <tr>
-                    <td>Arquivo 2.txt</td>
-                </tr>
-                <tr>
-                    <td>Arquivo 3.txt</td>
-                </tr>
-                <tr>
-                    <td>Arquivo 4.txt</td>
-                </tr>
-                <tr>
-                    <td>Arquivo 5.txt</td>
-                </tr>
+            <tbody id="tblDinamica">
             </tbody>
         </table>
 	</body>
