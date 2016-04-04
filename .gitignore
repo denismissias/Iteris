@@ -25,6 +25,8 @@ build/Release
 
 # Dependency directory
 node_modules
+bootstrap
+jquery
 
 # Optional npm cache directory
 .npm

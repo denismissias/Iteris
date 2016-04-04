@@ -1,0 +1,21 @@
+{
+  "name": "app_default",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Denis Missias <denis.missias@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/denismissias/Iteris",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
