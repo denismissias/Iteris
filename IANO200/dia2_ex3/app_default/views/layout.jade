@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript', src='/jquery/dist/jquery.min.js')
+    script(type='text/javascript', src='/bootstrap/dist/js/bootstrap.min.js')
+    script(type='text/javascript', src='/javascripts/nav-control.js')
+  body.container
+      nav.navbar.navbar-default
+        .container-fluid
+          .navbar-header
+            a.navbar-brand(href='/') Default Express App
+          ul.nav.navbar-nav
+            li
+              a(href='/') Home
+            li
+              a(href='users') Usuários
+    block content
